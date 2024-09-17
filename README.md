@@ -9,5 +9,5 @@ I recall a time when creating a chatbot involved manually labeling responses to 
 
 ## Data
 
-Link to dataset 2: [E-commerce-faq](https://www.kaggle.com/datasets/saadmakhdoom/ecommerce-faq-chatbot-dataset)
+Link to dataset: [E-commerce-faq](https://www.kaggle.com/datasets/saadmakhdoom/ecommerce-faq-chatbot-dataset)
 
