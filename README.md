@@ -46,6 +46,8 @@ For detailed instructions, refer to the Installation Guide.
 
 ## Evaluation
 
+for the code for the evaluation please refer to the [retrieval-eval.ipynb](./retrieval-eval.ipynb)
+
 ## Retrival
 
 ## The RAG flow
