@@ -40,7 +40,8 @@ pip install poetry
 poetry install
 ```
 
-	3.	Load the datasets and start the chatbot.
+
+3.	Load the datasets and start the chatbot.
 
 For detailed instructions, refer to the Installation Guide.
 
