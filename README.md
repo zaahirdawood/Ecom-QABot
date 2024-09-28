@@ -1,13 +1,62 @@
 # Ecom-QABot
-An LLM powered app that can answer questions an Ecom resource centre
 
-## Problem description
+E-commerce Chatbot with Retrieval-Augmented Generation (RAG)
 
-I recall a time when creating a chatbot involved manually labeling responses to set questions. The bots felt robotic and inflexible, often leading to requests to speak to a human. Now, language models respond more organically, fostering customer relationships. This repo addresses the challenge of responding to E-commerce requests with a basic RAG flow.
+Overview
+
+This repository contains a project focused on developing an E-commerce chatbot that effectively responds to customer inquiries using a basic Retrieval-Augmented Generation (RAG) flow.
+
+Problem Statement
+
+Creating responsive and engaging chatbots has traditionally involved manually labeling responses to predefined questions. This approach often results in robotic interactions, causing users to feel frustrated and prompting them to seek human assistance. In the rapidly evolving landscape of E-commerce, there is a pressing need for chatbots that can engage customers organically, enhancing their experience and streamlining support.
+
+Objectives
+
+The goal of this project is to leverage modern language models and the RAG framework to create a chatbot capable of providing relevant, context-aware responses to various E-commerce inquiries. By addressing this challenge, we aim to improve customer satisfaction, reduce reliance on human operators, and foster stronger customer relationships.
+
+Data Description
+
+To tackle the problem, we utilize the following datasets:
+
+	1.	E-commerce Product Data: This dataset includes information about products, such as names, descriptions, prices, and categories. This information will help the chatbot retrieve relevant product details based on customer queries.
+	2.	Customer Inquiry Logs: A collection of previous customer interactions, including questions and responses. This dataset serves as a training resource to enhance the chatbot’s understanding of common inquiries and effective responses.
+	3.	Feedback Data: Data from customer feedback and ratings on interactions. This will help evaluate the chatbot’s performance and guide future improvements.
+
+Link to dataset: [E-commerce-faq](https://www.kaggle.com/datasets/saadmakhdoom/ecommerce-faq-chatbot-dataset)
+
+
+Implementation
+
+The project employs a Retrieval-Augmented Generation (RAG) flow to combine retrieval of relevant information from the datasets with generative language models. This approach allows the chatbot to provide accurate answers while maintaining a conversational tone.
+
+Getting Started
+
+To get started with this project, follow these steps:
+
+	1.	Clone this repository.
+	2.	Install the necessary dependencies.
+
+Running it
+
+We use poetry to manage our dependencies and python 3.11.6
+
+```bash
+pip install poetry
+```
+
+```bash
+poetry install
+```
+
+	3.	Load the datasets and start the chatbot.
+
+For detailed instructions, refer to the Installation Guide.
+
+Contributing
+
+Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
+
 
 ## RAG flow
 
-## Data
-
-Link to dataset: [E-commerce-faq](https://www.kaggle.com/datasets/saadmakhdoom/ecommerce-faq-chatbot-dataset)
 
