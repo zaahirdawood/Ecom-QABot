@@ -21,7 +21,7 @@ To tackle the problem, we utilize the following datasets:
 
 The project employs a Retrieval-Augmented Generation (RAG) flow to combine retrieval of relevant information from the datasets with generative language models. This approach allows the chatbot to provide accurate answers while maintaining a conversational tone.
 
-##Getting Started
+## Getting Started
 
 To get started with this project, follow these steps:
 
