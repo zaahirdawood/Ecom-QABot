@@ -25,8 +25,9 @@ The project employs a Retrieval-Augmented Generation (RAG) flow to combine retri
 
 To get started with this project, follow these steps:
 
-	1.	Clone this repository.
-	2.	Install the necessary dependencies.
+1.	Clone this repository.
+   
+2.	Install the necessary dependencies.
 
 Running it
 
