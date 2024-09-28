@@ -50,6 +50,12 @@ For detailed instructions, refer to the Installation Guide.
 
 for the code for the evaluation please refer to the [retrieval-eval.ipynb](./retrieval-eval.ipynb)
 
+basic retrieval evaluation results in without any boosting:
+
+`Hit rate`: 89%
+
+`MRR`: 64%
+
 ## Retrival
 
 ## The RAG flow
