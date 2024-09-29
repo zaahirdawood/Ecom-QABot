@@ -17,6 +17,7 @@ seaborn = "^0.13.2"
 elasticsearch = "^8.15.1"
 sentence-transformers = "^3.0.1"
 openai = "^1.45.0"
+hyperopt = "^0.2.7"
 
 
 [build-system]
