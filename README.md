@@ -16,6 +16,12 @@ To tackle the problem, we utilize the following datasets:
 	2.	Customer Inquiry Logs: A collection of previous customer interactions, including questions and responses. This dataset serves as a training resource to enhance the chatbot’s understanding of common inquiries and effective responses.
 	3.	Feedback Data: Data from customer feedback and ratings on interactions. This will help evaluate the chatbot’s performance and guide future improvements.
 
+## Technologies
+
+Python 3.11.6
+Minsearch for full-text search
+Flask as the API interface 
+OpenAI (gpt-4o-mini) as an LLM
 
 ## Implementation
 
