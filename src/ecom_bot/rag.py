@@ -3,9 +3,10 @@ from openai import OpenAI
 from dotenv import load_dotenv
 
 
-ingest.load_index()
+index= ingest.load_index()
 load_dotenv()
 client= OpenAI()
+
 
 
 def search(query):

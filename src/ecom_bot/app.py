@@ -20,8 +20,8 @@ def process_question():
     result= {"conversation_id": conversation_id,
              "answer": answer}
     
-    
     return jsonify(result)
+
 
 @app.route('/feedback', methods=['POST'])
 def process_feedback():
