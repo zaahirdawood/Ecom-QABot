@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import uuid
-from src.ecom_bot.rag import rag
+from rag import rag
 
 
 app = Flask(__name__)

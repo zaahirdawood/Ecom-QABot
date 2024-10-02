@@ -1,9 +1,9 @@
-import src.ecom_bot.ingest
+import ingest
 from openai import OpenAI
 from dotenv import load_dotenv
 
 
-src.ecom_bot.ingest.load_index()
+ingest.load_index()
 load_dotenv()
 client= OpenAI()
 

@@ -2,7 +2,7 @@ import pandas as pd
 import minsearch
 
 
-def load_index(data_path=''):
+def load_index(data_path='../../data/chunked_data.csv'):
 
     dat_df = pd.read_csv(data_path)
 
