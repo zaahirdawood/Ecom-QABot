@@ -41,6 +41,23 @@ pip install poetry
 poetry install
 ```
 
+running the application
+
+```bash
+poetry run python src/ecom_bot/app.py
+```
+
+testing the application
+
+```bash
+URL=http://127.0.0.1:5000
+
+DATA='{"question": "How can I find out where is my order?"}'
+
+curl -X POST ${URL}/question \
+ -H "Content-Type: application/json" \
+ -d "${DATA}"
+```
 
 3.	Load the datasets and start the chatbot.
 
