@@ -150,10 +150,17 @@ dat = json.loads(response_string)
 
 
 import pandas as pd
-dat_df = pd.DataFrame(dat)
+import minsearch
 
-dat_df.head()
+dat_df = pd.read_csv('/data/')
 
+documents = dat_df.to_dict(orient='records')
+
+
+index= minsearch.Index(
+    text_fields = ['question', 'answer', 'topic'],
+    keyword_fields = ['id']
+)
 
 # In[21]:
 
@@ -182,6 +189,8 @@ index= minsearch.Index(
     text_fields = ['question', 'answer', 'id', 'topic'],
     keyword_fields = []
 )
+
+index.fit()
 
 
 # In[244]:
