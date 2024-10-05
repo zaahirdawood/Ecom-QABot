@@ -107,6 +107,12 @@ feedback results:
 }
 ```
 
+alternatively to test the app try:
+
+```bash
+poetry run python test.py
+```
+
 3.	Load the datasets and start the chatbot.
 
 For detailed instructions, refer to the Installation Guide.
