@@ -117,6 +117,18 @@ basic retrieval evaluation results in without any boosting:
 
 `MRR`: 64%
 
+after optimisation using a variation of weight on question and topic
+
+these were the parameters : 
+
+```
+{'question': 0.32661063225044673, 'topic': 0.1000480066922591}
+```
+
+`Hit rate`: 91%
+
+`MRR`: 71%
+
 ## Retrival
 
 ## The RAG flow
