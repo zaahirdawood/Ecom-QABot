@@ -68,6 +68,16 @@ curl -X POST \
     ${URL}/question
 ```
 
+llm answer results:
+
+```json
+{
+  "answer": "You can find out where your order is by tracking it. To track your order, log into your account and navigate to the 'Order History' section. There, you will find the tracking information for your shipment.",
+  "conversation_id": "a3572aaa-d725-4408-a2e1-d17fc78ad5b6",
+  "question": "How can I find out where is my order?"
+}
+```
+
 Sending feedback:
 
 ```bash
@@ -83,6 +93,14 @@ curl -X POST \
     -d "${FEEDBACK_DATA}" \
     ${URL}/feedback
 
+```
+
+feedback results:
+
+```json
+{
+  "message": "Feedback received for conversation a3572aaa-d725-4408-a2e1-d17fc78ad5b6: 1"
+}
 ```
 
 3.	Load the datasets and start the chatbot.
