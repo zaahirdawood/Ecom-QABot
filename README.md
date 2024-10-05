@@ -45,9 +45,7 @@ if you don't have poetry run:
 pip install poetry
 ```
 
-```bash
-pip install poetry
-```
+once the repository is copied run to test the llm application 
 
 ```bash
 poetry install
