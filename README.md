@@ -39,6 +39,12 @@ Running it
 
 We use poetry to manage our dependencies and python 3.11.6
 
+if you don't have poetry run:
+
+```bash
+pip install poetry
+```
+
 ```bash
 pip install poetry
 ```
