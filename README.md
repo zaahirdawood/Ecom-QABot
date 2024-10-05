@@ -57,12 +57,32 @@ testing the application
 
 ```bash
 URL=http://127.0.0.1:5000
+QUESTION="How can I find out where is my order?"
+DATA='{
+    "question": "'${QUESTION}'"
+}'
 
-DATA='{"question": "How can I find out where is my order?"}'
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -d "${DATA}" \
+    ${URL}/question
+```
 
-curl -X POST ${URL}/question \
- -H "Content-Type: application/json" \
- -d "${DATA}"
+Sending feedback:
+
+```bash
+ID='a3572aaa-d725-4408-a2e1-d17fc78ad5b6'
+
+FEEDBACK_DATA='{
+    "conversation_id": "'${ID}'",
+    "feedback": 1
+}'
+
+curl -X POST \
+    -H "Content-Type: application/json" \
+    -d "${FEEDBACK_DATA}" \
+    ${URL}/feedback
+
 ```
 
 3.	Load the datasets and start the chatbot.
