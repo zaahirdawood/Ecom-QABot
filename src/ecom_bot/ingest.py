@@ -1,9 +1,10 @@
 import pandas as pd
 import minsearch
+import os
 
-#../../data/chunked_data.csv
+dp= os.environ['DATA_PATH']
 
-def load_index(data_path='/src/data/chunked_data.csv'): 
+def load_index(data_path=dp): 
 
     dat_df = pd.read_csv(data_path)
 
