@@ -18,6 +18,6 @@ COPY /src/ecom_bot .
 
 CMD ["python","app.py"]
 
-EXPOSE 5000
+EXPOSE 5001
 
 ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]

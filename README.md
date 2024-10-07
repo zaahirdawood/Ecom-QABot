@@ -157,4 +157,15 @@ The more straightforward method to run this application is Docker.
 ```bash
 docker-compose up
 ```
+after running the command above, the app can be tested by doing the following:
+
+```bash
+docker build -t ecom-bot .
+
+docker run -it --rm \
+    -e OPENAI_API_KEY=${OPENAI_API_KEY} \
+    -e DATA_PATH="data/chunked_data.csv" \
+    -p 5001:5000 \
+    ecom-bot
+```
  
