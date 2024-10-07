@@ -1,8 +1,10 @@
 import requests
 
-url='http://0.0.0.0:5001/question'
+url='http://127.0.0.1:5000/question'
 
-#'http://127.0.0.1:5001/question'
+#'http://0.0.0.0:5001/question'
+#or
+#'http://127.0.0.1:5000/question'
 
 question= (
     "How can I find out where is my order?"
