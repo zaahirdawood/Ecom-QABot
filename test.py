@@ -7,7 +7,7 @@ url='http://127.0.0.1:5000/question'
 #'http://127.0.0.1:5000/question'
 
 question= (
-    "How can I find out where is my order?"
+    "How can I find out more about when I will recieve my deliver"
 )
 
 data= {'question':question}

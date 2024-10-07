@@ -1,7 +1,7 @@
-import os
-import requests
-import pandas as pd
-from tqdm.auto import tqdm
+# import os
+# import requests
+# import pandas as pd
+# from tqdm.auto import tqdm
 # from dotenv import load_dotenv
 
 from db import init_db

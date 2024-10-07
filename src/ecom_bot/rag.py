@@ -2,6 +2,7 @@ from time import time
 import ingest
 from openai import OpenAI
 from dotenv import load_dotenv
+import json
 
 
 
@@ -49,13 +50,78 @@ def llm(prompt):
         messages=[{"role":"user","content":prompt}]
     )
     
-    return reponse.choices[0].message.content
+    answer= reponse.choices[0].message.content
+    
+    token_stats = {
+        "prompt_tokens": reponse.usage.prompt_tokens,
+        "completion_tokens": reponse.usage.completion_tokens,
+        "total_tokens": reponse.usage.total_tokens,
+    }
+    
+    return answer, token_stats
 
-def rag(query):
+evaluation_prompt_template = """
+You are an expert evaluator for a RAG system.
+Your task is to analyze the relevance of the generated answer to the given question.
+Based on the relevance of the generated answer, you will classify it
+as "NON_RELEVANT", "PARTLY_RELEVANT", or "RELEVANT".
+
+Here is the data for evaluation:
+
+Question: {question}
+Generated Answer: {answer}
+
+Please analyze the content and context of the generated answer in relation to the question
+and provide your evaluation in parsable JSON without using code blocks:
+
+{{
+  "Relevance": "NON_RELEVANT" | "PARTLY_RELEVANT" | "RELEVANT",
+  "Explanation": "[Provide a brief explanation for your evaluation]"
+}}
+""".strip()
+
+
+def evaluate_relevance(query, answer):
+    prompt_answer = evaluation_prompt_template.format(question=query, answer=answer)
+    evaluation, tokens = llm(prompt_answer)
+
+    try:
+        json_eval = json.loads(evaluation)
+        return json_eval, tokens
+    
+    except json.JSONDecodeError:
+        
+        result={
+            "Relevance":"Unknown",
+            "Explanation":"Failed to parse evaluation"
+        }
+        return result, tokens
+
+# def calculate_openai_cost(model="gpt-4o-mini", tokens):
+#     openai_cost = 0
+
+#     if model == "gpt-4o-mini":
+#         openai_cost = (
+#             tokens["prompt_tokens"] * 0.00015 + tokens["completion_tokens"] * 0.0006
+#         ) / 1000
+#     else:
+#         print("Model not recognized. OpenAI cost calculation failed.")
+
+#     return openai_cost
+    
+
+def rag(query): 
     t0= time()
+    
     results= search(query)
     prompt= build_prompt(query=query,search_results=results)
-    response= llm(prompt=prompt)
+    response, token_stats = llm(prompt=prompt)
+    relevance, rel_token_stats= evaluate_relevance(query, response)
+    
+    # openai_cost_rag = calculate_openai_cost("gpt-4o-mini", token_stats)
+    # openai_cost_eval = calculate_openai_cost("gpt-4o-mini", rel_token_stats)
+    
+    # openai_cost= openai_cost_rag + openai_cost_eval
     t1= time()
     
     took= t1 - t0
@@ -63,15 +129,15 @@ def rag(query):
     answer_data= { "answer": response,
                   "model_used": 'gpt-4o-mini',
                   "response_time": took,
-                  "relevance": 0, 
-                  "relevance_explanation": "RELEVANT",
-                  "prompt_tokens": len(prompt.split()),  
-                  "completion_tokens": len(response.split()),  
-                  "total_tokens": len(prompt.split()) + len(response.split()),  
-                  "eval_prompt_tokens": 0,  
-                  "eval_completion_tokens": 0,  
-                  "eval_total_tokens": 0,  
-                 "openai_cost": 0 
+                  "relevance": relevance.get("Relevance","UNKNOWN"), 
+                  "relevance_explanation": relevance.get("Explanation","Failed to parse evaluation"),
+                  "prompt_tokens": token_stats['prompt_tokens'],  
+                  "completion_tokens": token_stats['completion_tokens'],  
+                  "total_tokens": rel_token_stats['total_tokens'],  
+                  "eval_prompt_tokens": rel_token_stats["prompt_tokens"],  
+                  "eval_completion_tokens": rel_token_stats["completion_tokens"],  
+                  "eval_total_tokens": token_stats["total_tokens"],  
+                 "openai_cost": 0
     }
     
     
