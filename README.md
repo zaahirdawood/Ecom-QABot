@@ -2,26 +2,33 @@
 
 E-commerce Chatbot with Retrieval-Augmented Generation (RAG)
 
-## Problem Statement
+## Project Overview
 
-Creating responsive and engaging chatbots has traditionally involved manually labeling responses to predefined questions. This approach often results in robotic interactions, causing users to feel frustrated and prompting them to seek human assistance. In the rapidly evolving landscape of E-commerce, there is a pressing need for chatbots that can engage customers organically, enhancing their experience and streamlining support.
+The Ecom-QABot is a RAG application designed to assist users with their E-commerce inquiries.
+
+The main use cases include:
+
+- **Product Information**: Providing detailed information about products based on user queries.
+- **Order Status**: Assisting users in tracking their orders and providing updates.
+- **FAQ Assistance**: Offering answers to frequently asked questions related to E-commerce.
+- **Conversational Interaction**: Engaging users in a natural conversation, enhancing their shopping experience.
 
 ## Data Description
 
-Link to dataset: [E-commerce-faq](https://www.kaggle.com/datasets/saadmakhdoom/ecommerce-faq-chatbot-dataset)
+Link to dataset: [E-commerce FAQ Dataset](https://www.kaggle.com/datasets/saadmakhdoom/ecommerce-faq-chatbot-dataset)
 
 To tackle the problem, we utilize the following datasets:
 
-	1.	E-commerce Product Data: This dataset includes information about products, such as names, descriptions, prices, and categories. This information will help the chatbot retrieve relevant product details based on customer queries.
-	2.	Customer Inquiry Logs: A collection of previous customer interactions, including questions and responses. This dataset serves as a training resource to enhance the chatbot’s understanding of common inquiries and effective responses.
-	3.	Feedback Data: Data from customer feedback and ratings on interactions. This will help evaluate the chatbot’s performance and guide future improvements.
+1. **E-commerce Product Data**: This dataset includes information about products, such as names, descriptions, prices, and categories. This information helps the chatbot retrieve relevant product details based on customer queries.
+2. **Customer Inquiry Logs**: A collection of previous customer interactions, including questions and responses. This dataset serves as a training resource to enhance the chatbot’s understanding of common inquiries and effective responses.
+3. **Feedback Data**: Data from customer feedback and ratings on interactions. This will help evaluate the chatbot’s performance and guide future improvements.
 
 ## Technologies
 
-Python 3.11.6
-Minsearch for full-text search
-Flask as the API interface 
-OpenAI (gpt-4o-mini) as an LLM
+- Python 3.11.6
+- Minsearch for full-text search
+- Flask as the API interface
+- OpenAI (gpt-4o-mini) as an LLM
 
 ## Implementation
 
@@ -31,37 +38,41 @@ The project employs a Retrieval-Augmented Generation (RAG) flow to combine retri
 
 To get started with this project, follow these steps:
 
-1.	Clone this repository.
+1. Clone this repository.
    
-2.	Install the necessary dependencies.
+2. Install the necessary dependencies.
 
-Running it
+### Running it
 
-We use poetry to manage our dependencies and python 3.11.6
+We use Poetry to manage our dependencies with Python 3.11.6.
 
-if you don't have poetry run:
+If you don't have Poetry, run:
 
 ```bash
 pip install poetry
 ```
 
-once the repository is copied run to test the llm application 
+Once the repository is copied, run to test the LLM application:
 
 ```bash
 poetry install
 ```
 
-running the application
+```bash
+poetry shell
+```
+Running the Application
 
 ```bash
 poetry run python src/ecom_bot/app.py
 ```
 
-testing the application
+Testing the Application
+
 
 ```bash
 URL=http://127.0.0.1:5000
-QUESTION="How can I find out where is my order?"
+QUESTION="How can I find out where my order is?"
 DATA='{
     "question": "'${QUESTION}'"
 }'
@@ -72,17 +83,17 @@ curl -X POST \
     ${URL}/question
 ```
 
-llm answer results:
+LLM Answer Results:
 
-```json
+```bash
 {
   "answer": "You can find out where your order is by tracking it. To track your order, log into your account and navigate to the 'Order History' section. There, you will find the tracking information for your shipment.",
   "conversation_id": "a3572aaa-d725-4408-a2e1-d17fc78ad5b6",
-  "question": "How can I find out where is my order?"
+  "question": "How can I find out where my order is?"
 }
 ```
 
-Sending feedback:
+Sending Feedback:
 
 ```bash
 ID='a3572aaa-d725-4408-a2e1-d17fc78ad5b6'
@@ -96,68 +107,62 @@ curl -X POST \
     -H "Content-Type: application/json" \
     -d "${FEEDBACK_DATA}" \
     ${URL}/feedback
-
 ```
 
-feedback results:
+Feedback Results:
 
-```json
+```bash
 {
   "message": "Feedback received for conversation a3572aaa-d725-4408-a2e1-d17fc78ad5b6: 1"
 }
 ```
 
-alternatively to test the app try:
+Alternatively, to test the app, try:
 
 ```bash
 poetry run python test.py
 ```
 
+
 3.	Load the datasets and start the chatbot.
 
 For detailed instructions, refer to the Installation Guide.
 
-## Evaluation
+Evaluation
 
-for the code for the evaluation please refer to the [retrieval-eval.ipynb](./retrieval-eval.ipynb)
+For the code for the evaluation, please refer to the retrieval-eval.ipynb.
 
-basic retrieval evaluation results in without any boosting:
+Basic retrieval evaluation results without any boosting:
 
-`Hit rate`: 89%
+	•	Hit rate: 89%
+	•	MRR: 64%
 
-`MRR`: 64%
+After optimization using a variation of weight on question and topic, these were the parameters:
 
-after optimisation using a variation of weight on question and topic
-
-these were the parameters : 
-
-```
+```json
 {'question': 0.32661063225044673, 'topic': 0.1000480066922591}
 ```
 
-`Hit rate`: 91%
-
-`MRR`: 71%
-
-## Retrival
-
-## The RAG flow
-
-## Monitoring
-
-## Contributing
-
-Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
+	•	Hit rate: 91%
+	•	MRR: 71%
 
 
-## Running it with Docker
+The RAG Flow
 
-The more straightforward method to run this application is Docker. 
+**develped the RAG Flow, due to time constraints did not manage to complete for project deadline**
+
+Monitoring
+
+**Monitoring is functional, the grafana UI is accesible, the dashboard was not completed for project deadline**
+
+Running it with Docker
+
+The more straightforward method to run this application is Docker.
+
 
 ```bash
 docker-compose up
 ```
-after running the command above, the app can be tested by doing the following:
 
 ```bash
 docker build -t ecom-bot .
@@ -168,4 +173,4 @@ docker run -it --rm \
     -p 5001:5000 \
     ecom-bot
 ```
- 
+
