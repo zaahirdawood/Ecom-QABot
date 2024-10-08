@@ -165,6 +165,10 @@ docker-compose up
 ```
 
 ```bash
+export POSTGRES_HOST=localhost
+```
+
+```bash
 docker build -t ecom-bot .
 
 docker run -it --rm \
@@ -174,3 +178,8 @@ docker run -it --rm \
     ecom-bot
 ```
 
+test the docker version using the test.py file.
+
+```bash
+poetry run python test.py
+```
