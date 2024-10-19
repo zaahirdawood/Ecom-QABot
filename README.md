@@ -183,3 +183,11 @@ test the docker version using the test.py file.
 ```bash
 poetry run python test.py
 ```
+
+Scheduled Improvements to the Application
+
+1. Try different chunking strategies.
+2. Upgrade retrieval methodology with embedding vectors to replace minsearch.py.
+3. Create a more modern UI instead for users to replace of a FLASK API.
+4. Try Prompt engineering that prevent bad actors from seeking lawsuits from e-commerce bots.
+5. Improve monitoring dashboard, its current state is subpar. 
